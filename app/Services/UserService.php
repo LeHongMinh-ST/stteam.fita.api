@@ -5,6 +5,8 @@ namespace App\Services;
 use App\DTO\ResponseData;
 use App\Repositories\User\UserRepository;
 use App\Services\BaseService;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class UserService extends BaseService
 {
@@ -14,9 +16,15 @@ class UserService extends BaseService
     {
     }
 
-    public function getListUser(): ResponseData
+    public function getListUser(array $data = []): ResponseData
     {
-        return $this->dataSuccess($this->userRepository->all());
+        try {
+            return $this->dataSuccess($this->userRepository->getListData($data));
+        } catch (Exception $exception) {
+            Log::error(__METHOD__);
+            Log::error($exception->getMessage());
+            return $this->dataInternalServerError();
+        }
     }
 
 

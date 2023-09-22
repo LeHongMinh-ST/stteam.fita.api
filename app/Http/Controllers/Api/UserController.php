@@ -15,9 +15,17 @@ class UserController extends BaseApiController
     {
     }
 
-    public function index(): JsonResponse
+    /**
+     * Get list user return json response
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function index(Request $request): JsonResponse
     {
-        $responseData = $this->userService->getListUser();
+        $data = $request->all();
+
+        $responseData = $this->userService->getListUser($data);
 
         return $this->responseJson($responseData);
     }

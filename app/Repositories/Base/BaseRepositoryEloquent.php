@@ -14,9 +14,9 @@ use Illuminate\Support\Arr;
 abstract class BaseRepositoryEloquent implements BaseRepository
 {
     /**
-     * @var Model
+     * @var Model|Builder
      */
-    protected Model $model;
+    protected Model|Builder $model;
 
     /**
      * @var Model

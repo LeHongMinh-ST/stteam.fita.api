@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use App\DTO\ResponseData;
 use App\Enums\MessageCode;
-use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -42,60 +41,60 @@ trait ResponseDataTrait
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataBadRequest($data = null, string $messages = MessageCode::BAD_REQUEST): ResponseData
+    public function dataBadRequest($data = null, string|MessageCode $messages = MessageCode::BAD_REQUEST): ResponseData
     {
         return new ResponseData(Response::HTTP_BAD_REQUEST, $messages, $data);
     }
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataUnprocessableEntity($data = null, string $messages = MessageCode::ERROR): ResponseData
+    public function dataUnprocessableEntity($data = null, string|MessageCode $messages = MessageCode::ERROR): ResponseData
     {
         return new ResponseData(Response::HTTP_UNPROCESSABLE_ENTITY, $messages, $data);
     }
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataNotFound($data = null, string $messages = MessageCode::NOT_FOUND): ResponseData
+    public function dataNotFound($data = null, string|MessageCode $messages = MessageCode::NOT_FOUND): ResponseData
     {
         return new ResponseData(Response::HTTP_NOT_FOUND, $messages, $data);
     }
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataForbidden($data = null, string $messages = MessageCode::FORBIDDEN): ResponseData
+    public function dataForbidden($data = null, string|MessageCode $messages = MessageCode::FORBIDDEN): ResponseData
     {
         return new ResponseData(Response::HTTP_FORBIDDEN, $messages, $data);
     }
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataUnauthorized($data = null, string $messages = MessageCode::UNAUTHORIZED): ResponseData
+    public function dataUnauthorized($data = null, string|MessageCode $messages = MessageCode::UNAUTHORIZED): ResponseData
     {
         return new ResponseData(Response::HTTP_UNAUTHORIZED, $messages, $data);
     }
 
     /**
      * @param $data
-     * @param string $messages
+     * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataInternalServerError($data = null, string $messages = MessageCode::INTERNAL_SERVER_ERROR): ResponseData
+    public function dataInternalServerError($data = null, string|MessageCode $messages = MessageCode::INTERNAL_SERVER_ERROR): ResponseData
     {
         return new ResponseData(Response::HTTP_INTERNAL_SERVER_ERROR, $messages, $data);
     }
