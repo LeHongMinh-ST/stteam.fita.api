@@ -90,12 +90,11 @@ trait ResponseDataTrait
     }
 
     /**
-     * @param $data
      * @param string|MessageCode $messages
      * @return ResponseData
      */
-    public function dataInternalServerError($data = null, string|MessageCode $messages = MessageCode::INTERNAL_SERVER_ERROR): ResponseData
+    public function dataInternalServerError(string|MessageCode $messages = MessageCode::INTERNAL_SERVER_ERROR): ResponseData
     {
-        return new ResponseData(Response::HTTP_INTERNAL_SERVER_ERROR, $messages, $data);
+        return new ResponseData(Response::HTTP_INTERNAL_SERVER_ERROR, $messages, null);
     }
 }

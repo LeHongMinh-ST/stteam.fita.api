@@ -3,48 +3,31 @@
 namespace App\Models;
 
 use App\Enums\Category\CategoryStatus;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use WendellAdriel\Lift\Attributes\Cast;
-use WendellAdriel\Lift\Attributes\Fillable;
-use WendellAdriel\Lift\Attributes\PrimaryKey;
 use WendellAdriel\Lift\Lift;
 
-final class Category extends BaseModel
+class Category extends BaseModel
 {
     use HasFactory, Lift;
 
     protected $table = 'categories';
 
-    #[PrimaryKey]
-    public int $id;
+    protected $fillable = [
+        'name',
+        'parent_id',
+        'depth',
+        'status',
+        'created_by',
+        'updated_by',
+    ];
 
-    #[Fillable]
-    public string $name;
-
-    #[Fillable]
-    public int $parent_id;
-
-    #[Fillable]
-    public int $depth;
-
-    #[Fillable]
-    #[Cast(CategoryStatus::class)]
-    public string $status;
-
-    #[Fillable]
-    public int $created_by;
-
-    #[Fillable]
-    public int $updated_by;
-
-    public CarbonImmutable|string|null $created_at;
-
-    public CarbonImmutable|string|null $updated_at;
+    protected $casts = [
+        'status' => CategoryStatus::class,
+    ];
 
     public function posts(): BelongsToMany
     {
@@ -76,7 +59,7 @@ final class Category extends BaseModel
         return $this->hasMany(self::class, 'parent_id')->with(['slug', 'children']);
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
 

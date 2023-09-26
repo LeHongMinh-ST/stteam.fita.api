@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Enums\Tag\TagStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
-final class Tag extends BaseModel
+class Tag extends BaseModel
 {
     use HasFactory;
 
@@ -15,9 +16,15 @@ final class Tag extends BaseModel
 
     protected $fillable = [
         'name',
+        'status',
         'created_by',
         'updated_by',
     ];
+
+    protected $casts = [
+        'status' => TagStatus::class,
+    ];
+
 
     public function posts(): BelongsToMany
     {
@@ -39,7 +46,7 @@ final class Tag extends BaseModel
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
 

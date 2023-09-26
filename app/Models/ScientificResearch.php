@@ -3,48 +3,28 @@
 namespace App\Models;
 
 use App\Enums\ScientificResearch\ScientificResearchStatus;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use WendellAdriel\Lift\Attributes\Cast;
-use WendellAdriel\Lift\Attributes\Fillable;
-use WendellAdriel\Lift\Attributes\PrimaryKey;
-use WendellAdriel\Lift\Lift;
 
-final class ScientificResearch extends BaseModel
+class ScientificResearch extends BaseModel
 {
-    use HasFactory, Lift;
+    use HasFactory;
 
     protected $table = 'scientific_researches';
 
-    #[PrimaryKey]
-    public int $id;
+    protected $fillable = [
+        'name',
+        'attachment_id',
+        'department_id',
+        'status',
+        'created_by',
+        'updated_by',
+    ];
 
-    #[Fillable]
-    public string $name;
-
-    #[Fillable]
-    public int $attachment_id;
-
-    #[Fillable]
-    public int $department_id;
-
-    #[Fillable]
-    #[Cast(ScientificResearchStatus::class)]
-    public string $status;
-
-    #[Fillable]
-    public int $created_by;
-
-    #[Fillable]
-    public int $updated_by;
-
-    #[Fillable]
-    public CarbonImmutable|string|null $created_at;
-
-    #[Fillable]
-    public CarbonImmutable|string|null $updated_at;
+    protected $casts = [
+        'status' => ScientificResearchStatus::class,
+    ];
 
     public function createdBy(): BelongsTo
     {
@@ -61,7 +41,7 @@ final class ScientificResearch extends BaseModel
         return $this->belongsToMany(ScientificResearch::class,'department_scientific_research');
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
         self::deleting(function (ScientificResearch $scientificResearch) {

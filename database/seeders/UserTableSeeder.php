@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Repositories\User\UserRepository;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Config;
 
 class UserTableSeeder extends Seeder
@@ -21,12 +21,20 @@ class UserTableSeeder extends Seeder
     {
         $this->userRepository->createOrUpdate(
             [
-                'name' => 'Admin',
+                'full_name' => 'Admin',
+                'user_name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Config::get('constants.default_password'),
             ],
             ['email' => 'admin@gmail.com']
         );
+
+//        User::castAndCreate([
+//            'full_name' => 'Admin',
+//            'user_name' => 'admin',
+//            'email' => 'admin@gmail.com',
+//            'password' => Config::get('constants.default_password'),
+//        ]);
     }
 
 

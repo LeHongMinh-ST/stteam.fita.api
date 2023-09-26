@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Enums\Teacher\TeacherEducationLevel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-final class Teacher extends BaseModel
+class Teacher extends BaseModel
 {
     use HasFactory;
 
@@ -19,6 +20,10 @@ final class Teacher extends BaseModel
         'education_level',
         'created_by',
         'updated_by',
+    ];
+
+    protected $casts = [
+        'education_level' => TeacherEducationLevel::class,
     ];
 
     public function rewards(): BelongsToMany

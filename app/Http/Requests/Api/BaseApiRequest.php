@@ -16,7 +16,11 @@ class BaseApiRequest extends FormRequest
     {
         $errors = (new ValidationException($validator))->errors();
 
-        $responseData = new ResponseData(Response::HTTP_UNPROCESSABLE_ENTITY, MessageCode::ERROR, $errors);
+        $responseData = new ResponseData(
+            Response::HTTP_UNPROCESSABLE_ENTITY,
+            MessageCode::ERROR,
+            ['errors' => $errors]
+        );
 
         throw new HttpResponseException(response()->json(
             $responseData->toArray(),

@@ -4,57 +4,33 @@ namespace App\Models;
 
 use App\Enums\Post\PostStatus;
 use App\Enums\Post\PostType;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
-use WendellAdriel\Lift\Attributes\Cast;
-use WendellAdriel\Lift\Attributes\Fillable;
-use WendellAdriel\Lift\Attributes\PrimaryKey;
-use WendellAdriel\Lift\Lift;
 
-final class Post extends BaseModel
+class Post extends BaseModel
 {
-    use HasFactory, Lift;
+    use HasFactory;
 
     protected $table = 'posts';
 
-    #[PrimaryKey]
-    public int $id;
+    protected $fillable = [
+        'title',
+        'content',
+        'type',
+        'department_id',
+        'feature_id',
+        'teacher_id',
+        'status',
+        'created_by',
+        'updated_by',
+    ];
 
-    #[Fillable]
-    public string $title;
-
-    #[Fillable]
-    public string $content;
-
-    #[Fillable]
-    #[Cast(PostType::class)]
-    public string $type;
-
-    #[Fillable]
-    public int $department_id;
-
-    #[Fillable]
-    public int $feature_id;
-
-    #[Fillable]
-    public int $teacher_id;
-
-    #[Fillable]
-    #[Cast(PostStatus::class)]
-    public string $status;
-
-    #[Fillable]
-    public int $created_by;
-
-    #[Fillable]
-    public int $updated_by;
-
-    public CarbonImmutable|string|null $created_at;
-
-    public CarbonImmutable|string|null $updated_at;
+    protected $casts = [
+        'type' => PostType::class,
+        'status' => PostStatus::class,
+    ];
 
     public function categories(): BelongsToMany
     {
@@ -81,7 +57,7 @@ final class Post extends BaseModel
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
 

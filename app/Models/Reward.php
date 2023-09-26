@@ -2,38 +2,24 @@
 
 namespace App\Models;
 
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use WendellAdriel\Lift\Attributes\Fillable;
-use WendellAdriel\Lift\Attributes\PrimaryKey;
-use WendellAdriel\Lift\Lift;
 
-final class Reward extends BaseModel
+class Reward extends BaseModel
 {
-    use HasFactory, Lift;
+    use HasFactory;
 
     protected $table = 'rewards';
 
-    #[PrimaryKey]
-    public int $id;
+    protected $fillable = [
+        'name',
+        'relate_url',
+        'created_by',
+        'updated_by',
+    ];
 
-    #[Fillable]
-    public string $name;
 
-    #[Fillable]
-    public string $relate_url;
-
-    #[Fillable]
-    public int $created_by;
-
-    #[Fillable]
-    public int $updated_by;
-
-    public CarbonImmutable|string|null $created_at;
-
-    public CarbonImmutable|string|null $updated_at;
 
     public function teachers(): BelongsToMany
     {
@@ -50,7 +36,7 @@ final class Reward extends BaseModel
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
         self::deleting(function (Reward $reward) {

@@ -4,13 +4,14 @@ namespace App\DTO;
 
 use App\Enums\MessageCode;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ResponseData
 {
     public function __construct(
-        public readonly int                   $statusCode,
-        public readonly string|MessageCode    $message,
-        public readonly array|Collection|null $data
+        public readonly int                                        $statusCode,
+        public readonly string|MessageCode                         $message,
+        public readonly array|Collection|LengthAwarePaginator|null $data
     )
     {
     }
@@ -28,9 +29,9 @@ class ResponseData
     /**
      * Get the value of data
      *
-     * @return array|Collection|null
+     * @return array|Collection|LengthAwarePaginator|null
      */
-    public function getData(): array|Collection|null
+    public function getData(): array|Collection|LengthAwarePaginator|null
     {
         return $this->data;
     }
@@ -59,6 +60,4 @@ class ResponseData
             'status_code' => $this->statusCode
         ];
     }
-
-
 }

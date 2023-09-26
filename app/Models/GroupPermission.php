@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-final class GroupPermission extends BaseModel
+class GroupPermission extends BaseModel
 {
     use HasFactory;
 
