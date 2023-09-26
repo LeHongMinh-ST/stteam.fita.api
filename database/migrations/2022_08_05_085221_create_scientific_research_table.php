@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ScientificResearch\ScientificResearchStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,9 +19,9 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->bigInteger('department_id')->nullable();
             $table->bigInteger('attachment_id')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->string('status')->default(ScientificResearchStatus::ENABLE->value);
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
 

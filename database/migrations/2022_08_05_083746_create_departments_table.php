@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Department\DepartmentStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,9 +17,9 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->boolean('is_active')->default(true);
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->string('status')->default(DepartmentStatus::ENABLE->value);
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

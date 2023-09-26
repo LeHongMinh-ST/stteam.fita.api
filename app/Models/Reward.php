@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use WendellAdriel\Lift\Attributes\Fillable;
 use WendellAdriel\Lift\Attributes\PrimaryKey;
 use WendellAdriel\Lift\Lift;
 
-final class Permission extends BaseModel
+final class Reward extends BaseModel
 {
     use HasFactory, Lift;
 
-    protected $table = 'permissions';
+    protected $table = 'rewards';
 
     #[PrimaryKey]
     public int $id;
@@ -22,13 +23,7 @@ final class Permission extends BaseModel
     public string $name;
 
     #[Fillable]
-    public string $code;
-
-    #[Fillable]
-    public string $group_code;
-
-    #[Fillable]
-    public string $description;
+    public string $relate_url;
 
     #[Fillable]
     public int $created_by;
@@ -40,17 +35,26 @@ final class Permission extends BaseModel
 
     public CarbonImmutable|string|null $updated_at;
 
-    public function roles(): BelongsToMany
+    public function teachers(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class, 'role_permission');
+        return $this->belongsToMany(Teacher::class, 'teacher_reward');
+    }
+
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 
     protected static function boot(): void
     {
         parent::boot();
-
-        static::deleting(function (Permission $model) {
-            $model->roles()->detach();
+        self::deleting(function (Reward $reward) {
+            $reward->teachers()->detach();
         });
     }
 }

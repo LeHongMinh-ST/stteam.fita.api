@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Enums\Post;
 
 enum PostStatus: string
 {
-    case Published = 'published';
+    case PUBLISHED = 'published';
 
-    case Draft = 'draft';
+    case DRAFT = 'draft';
 
-    case Pending = 'pending';
+    case PENDING = 'pending';
 }

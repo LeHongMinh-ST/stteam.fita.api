@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Subject\SubjectStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -20,10 +21,10 @@ return new class extends Migration
             $table->integer('credit_practice')->nullable();
             $table->string('subject_code')->nullable();
             $table->bigInteger('department_id')->nullable();
-            $table->boolean('is_required')->nullable();
-            $table->boolean('is_active')->nullable();
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->boolean('is_required')->default(true);
+            $table->string('status')->default(SubjectStatus::ENABLE->value);
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
 

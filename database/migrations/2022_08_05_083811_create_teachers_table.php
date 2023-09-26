@@ -21,9 +21,9 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('teaching_start')->nullable();
             $table->string('teaching_end')->nullable();
-            $table->string('education_level')->default(TeacherEducationLevel::Master->value);
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->string('education_level')->default(TeacherEducationLevel::MASTER->value);
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
         Schema::create('teacher_subject', function (Blueprint $table) {

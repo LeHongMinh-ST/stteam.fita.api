@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('relate_id')->nullable();
             $table->string('relate_url')->nullable();
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
 

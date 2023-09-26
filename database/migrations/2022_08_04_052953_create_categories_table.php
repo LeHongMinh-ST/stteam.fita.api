@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Category\CategoryStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,9 +18,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->bigInteger('parent_id')->default(0);
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
-            $table->boolean('is_active')->default(true);
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
+            $table->integer('depth')->default(0);
+            $table->string('status')->default(CategoryStatus::ENABLE->value);
             $table->timestamps();
         });
         Schema::create('category_post', function (Blueprint $table) {

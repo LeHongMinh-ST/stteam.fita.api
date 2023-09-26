@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
@@ -12,15 +11,12 @@ class BaseModel extends Model
     {
         parent::boot();
 
-        static::creating(function ($model) {
-            $model->created_at = CarbonImmutable::now();
-            $model->updated_at = CarbonImmutable::now();
+        self::creating(function ($model) {
             $model->created_by = auth()->id();
             $model->updated_by = auth()->id();
         });
 
-        static::updating(function (User $model) {
-            $model->updated_at = CarbonImmutable::now();
+        self::updating(function (User $model) {
             $model->updated_by = auth()->id();
         });
     }

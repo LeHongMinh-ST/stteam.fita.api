@@ -4,8 +4,8 @@ namespace App\Enums\Teacher;
 
 enum TeacherEducationLevel: string
 {
-    case Master = 'master';
-    case Doctor = 'doctor';
-    case AssociateProfessor = 'associate_professor';
-    case Professor = 'professor';
+    case MASTER = 'master';
+    case DOCTOR = 'doctor';
+    case ASSOCIATE_PROFESSOR = 'associate_professor';
+    case PROFESSOR = 'professor';
 }

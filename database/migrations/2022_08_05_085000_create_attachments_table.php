@@ -17,11 +17,10 @@ return new class extends Migration
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
             $table->string('path')->nullable();
-            $table->boolean('is_deleted')->nullable();
-            $table->string('type')->default(AttachmentType::File->value);
+            $table->string('type')->default(AttachmentType::FILE->value);
             $table->bigInteger('target_id')->nullable();
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
             $table->timestamps();
         });
     }

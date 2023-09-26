@@ -2,19 +2,22 @@
 
 namespace App\Models;
 
+use App\Enums\Department\DepartmentStatus;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use WendellAdriel\Lift\Attributes\Cast;
 use WendellAdriel\Lift\Attributes\Fillable;
 use WendellAdriel\Lift\Attributes\PrimaryKey;
 use WendellAdriel\Lift\Lift;
 
-final class Role extends BaseModel
+final class Department extends BaseModel
 {
     use HasFactory, Lift;
 
-    protected $table = 'roles';
+    protected $table = 'departments';
 
     #[PrimaryKey]
     public int $id;
@@ -23,33 +26,46 @@ final class Role extends BaseModel
     public string $name;
 
     #[Fillable]
+    #[Cast(DepartmentStatus::class)]
+    public string $status;
+
+    #[Fillable]
     public int $created_by;
 
     #[Fillable]
     public int $updated_by;
 
-    #[Fillable]
     public CarbonImmutable|string|null $created_at;
 
-    #[Fillable]
     public CarbonImmutable|string|null $updated_at;
 
-    public function permissions(): BelongsToMany
-    {
-        return $this->belongsToMany(Permission::class, 'role_permission');
-    }
+
 
     public function users(): HasMany
     {
         return $this->hasMany(User::class);
     }
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public function scientificResearches(): BelongsToMany
+    {
+        return $this->belongsToMany(Department::class, 'department_scientific_research');
+    }
+
     protected static function boot(): void
     {
         parent::boot();
-
-        self::deleting(function (Role $model) {
-            $model->permissions()->detach();
+        self::deleting(function(Department $department) {
+            $department->scientificResearches()->detach();
         });
     }
 }

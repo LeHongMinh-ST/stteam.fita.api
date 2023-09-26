@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Tag\TagStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,9 +17,9 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name', 120);
-            $table->bigInteger('create_by')->nullable();
-            $table->bigInteger('update_by')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->bigInteger('created_by')->nullable();
+            $table->bigInteger('updated_by')->nullable();
+            $table->string('status')->default(TagStatus::ENABLE->value);
             $table->timestamps();
         });
 

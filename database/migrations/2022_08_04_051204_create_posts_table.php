@@ -18,13 +18,13 @@ return new class extends Migration {
             $table->id();
             $table->string('title')->nullable();
             $table->text('content')->nullable();
-            $table->string('type')->default(PostType::News->value);
+            $table->string('type')->default(PostType::NEWS->value);
             $table->bigInteger('department_id')->nullable();
             $table->bigInteger('teacher_id')->nullable();
             $table->bigInteger('feature_id')->nullable();
-            $table->string('status')->default(PostStatus::Pending->value);
-            $table->bigInteger('create_by');
-            $table->bigInteger('update_by');
+            $table->string('status')->default(PostStatus::PENDING->value);
+            $table->bigInteger('created_by');
+            $table->bigInteger('updated_by');
             $table->timestamps();
         });
     }

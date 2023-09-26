@@ -4,7 +4,7 @@ namespace App\Enums\Attachment;
 
 enum AttachmentType: string
 {
-    case Image = 'image';
-    case Video = 'video';
-    case File = 'file';
+    case IMAGE= 'image';
+    case VIDEO = 'video';
+    case FILE = 'file';
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,9 +16,11 @@ use WendellAdriel\Lift\Attributes\PrimaryKey;
 use WendellAdriel\Lift\Lift;
 
 
-class User extends Authenticatable
+final class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Lift;
+
+    protected $table = 'users';
 
     #[PrimaryKey]
     public int $id;
@@ -67,6 +70,12 @@ class User extends Authenticatable
     public ?string $remember_token;
 
     #[Fillable]
+    public ?string $social_id;
+
+    #[Fillable]
+    public ?string $social_type;
+
+    #[Fillable]
     #[Cast('datetime')]
     public ?CarbonImmutable $email_verified_at;
 
@@ -75,16 +84,26 @@ class User extends Authenticatable
     public CarbonImmutable|string|null $updated_at;
 
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'created_by');
+    }
+
+    public function updatedBy(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'updated_by');
+    }
+
     protected static function boot(): void
     {
         parent::boot();
 
-        static::creating(function ($model) {
+        self::creating(function ($model) {
             $model->created_by = auth()->id();
             $model->updated_by = auth()->id();
         });
 
-        static::updating(function (User $model) {
+        self::updating(function (User $model) {
             $model->updated_by = auth()->id();
         });
     }

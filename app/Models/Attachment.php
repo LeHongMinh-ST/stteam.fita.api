@@ -2,33 +2,31 @@
 
 namespace App\Models;
 
+use App\Enums\Attachment\AttachmentType;
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use WendellAdriel\Lift\Attributes\Cast;
 use WendellAdriel\Lift\Attributes\Fillable;
 use WendellAdriel\Lift\Attributes\PrimaryKey;
 use WendellAdriel\Lift\Lift;
 
-final class Permission extends BaseModel
+final class Attachment extends BaseModel
 {
     use HasFactory, Lift;
-
-    protected $table = 'permissions';
 
     #[PrimaryKey]
     public int $id;
 
     #[Fillable]
-    public string $name;
+    public string $path;
 
     #[Fillable]
-    public string $code;
+    #[Cast(AttachmentType::class)]
+    public string $type;
 
     #[Fillable]
-    public string $group_code;
-
-    #[Fillable]
-    public string $description;
+    public int $target_id;
 
     #[Fillable]
     public int $created_by;
@@ -36,21 +34,19 @@ final class Permission extends BaseModel
     #[Fillable]
     public int $updated_by;
 
+    #[Fillable]
     public CarbonImmutable|string|null $created_at;
 
+    #[Fillable]
     public CarbonImmutable|string|null $updated_at;
 
-    public function roles(): BelongsToMany
+    public function createdBy(): BelongsTo
     {
-        return $this->belongsToMany(Role::class, 'role_permission');
+        return $this->belongsTo(User::class, 'created_by');
     }
 
-    protected static function boot(): void
+    public function updatedBy(): BelongsTo
     {
-        parent::boot();
-
-        static::deleting(function (Permission $model) {
-            $model->roles()->detach();
-        });
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }
