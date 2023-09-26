@@ -4,14 +4,15 @@ namespace App\DTO;
 
 use App\Enums\MessageCode;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ResponseData
 {
     public function __construct(
-        public readonly int                                        $statusCode,
-        public readonly string|MessageCode                         $message,
-        public readonly array|Collection|LengthAwarePaginator|null $data
+        public readonly int                                              $statusCode,
+        public readonly string|MessageCode                               $message,
+        public readonly array|Collection|LengthAwarePaginator|Model|null $data
     )
     {
     }

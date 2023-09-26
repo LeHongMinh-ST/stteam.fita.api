@@ -8,14 +8,19 @@ class ModelObserver
 {
     public function created(Model $model): void
     {
-        $model->created_by = 1;
-        $model->updated_by = 1;
-        $model->save();
+        if (auth()->check()) {
+            $model->created_by = auth()->id();
+            $model->updated_by = auth()->id();
+            $model->save();
+        }
+
     }
 
     public function updated(Model $model): void
     {
-        $model->updated_by = 1;
-        $model->save();
+        if (auth()->check()) {
+            $model->updated_by = auth()->id();
+            $model->save();
+        }
     }
 }

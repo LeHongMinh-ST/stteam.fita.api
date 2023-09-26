@@ -57,7 +57,6 @@ class AuthService extends BaseService
             if (empty($user)) {
                 return $this->dataUnauthorized();
             }
-
             return $this->dataSuccess($user);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);

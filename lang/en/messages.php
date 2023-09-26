@@ -12,5 +12,8 @@ return  [
         'too_many_requests' => 'Too many requests',
         'server_error' => 'Server error, please try again later',
         'service_unavailable' => 'Service unavailable',
-    ]
+    ],
+    'user' => [
+        'user_not_found' => 'User not found'
+    ],
 ];
