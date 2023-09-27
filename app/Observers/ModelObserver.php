@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelObserver
 {
-    public function created(Model $model): void
+    public function creating(Model $model): void
     {
-        if (auth()->check()) {
+        if (!$model->isDirty('created_by')) {
             $model->created_by = auth()->id();
-            $model->updated_by = auth()->id();
-            $model->save();
         }
-
+        if (!$model->isDirty('updated_by')) {
+            $model->updated_by = auth()->id();
+        }
     }
 
-    public function updated(Model $model): void
+    public function updating(Model $model): void
     {
-        if (auth()->check()) {
+        if (!$model->isDirty('updated_by')) {
             $model->updated_by = auth()->id();
-            $model->save();
         }
     }
 }
