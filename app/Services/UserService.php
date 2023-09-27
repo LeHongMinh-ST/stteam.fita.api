@@ -87,7 +87,7 @@ class UserService extends BaseService
                 $data['password'] = Config::get('constants.default_password');
             }
             $user = $this->userRepository->createOrUpdate($data);
-            return $this->dataSuccess($user);
+            return $this->dataCreateSuccess($user);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
@@ -140,7 +140,7 @@ class UserService extends BaseService
                 return $this->dataNotFound();
             }
             $this->userRepository->delete($user);
-            return $this->dataSuccess();
+            return $this->dataNoContent();
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
