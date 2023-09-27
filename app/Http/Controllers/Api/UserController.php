@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\User\StoreUserRequest;
 use App\Http\Requests\Api\User\UpdateUserRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Throwable;
 
 class UserController extends BaseApiController
 {
@@ -22,6 +22,7 @@ class UserController extends BaseApiController
      *
      * @param Request $request
      * @return JsonResponse
+     * @throws Throwable
      */
     public function index(Request $request): JsonResponse
     {
@@ -37,6 +38,7 @@ class UserController extends BaseApiController
      *
      * @param int $id
      * @return JsonResponse
+     * @throws Throwable
      */
     public function show(int $id): JsonResponse
     {
@@ -50,6 +52,7 @@ class UserController extends BaseApiController
      *
      * @param StoreUserRequest $request
      * @return JsonResponse
+     * @throws Throwable
      */
     public function store(StoreUserRequest $request): JsonResponse
     {
@@ -66,6 +69,7 @@ class UserController extends BaseApiController
      * @param int $id
      * @param UpdateUserRequest $request
      * @return JsonResponse
+     * @throws Throwable
      */
     public function update(int $id, UpdateUserRequest $request): JsonResponse
     {
@@ -81,6 +85,7 @@ class UserController extends BaseApiController
      *
      * @param int $id
      * @return JsonResponse
+     * @throws Throwable
      */
     public function destroy(int $id): JsonResponse
     {

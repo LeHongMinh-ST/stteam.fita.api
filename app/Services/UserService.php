@@ -9,14 +9,31 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
+/**
+ * @class UserService
+ */
 class UserService extends BaseService
 {
+    /**
+     *
+     * @param UserRepository $userRepository
+     */
     public function __construct(
         private readonly UserRepository $userRepository
     )
     {
     }
 
+    /**
+     * Handle get list user
+     *
+     * @param array $data
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function getListUser(array $data = []): ResponseData
     {
         try {
@@ -28,6 +45,16 @@ class UserService extends BaseService
         }
     }
 
+    /**
+     * Handle get user by id
+     *
+     * @param int $id
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function getUserById(int $id): ResponseData
     {
         try {
@@ -43,6 +70,16 @@ class UserService extends BaseService
         }
     }
 
+    /**
+     * Handle create user
+     *
+     * @param array $data
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function createUser(array $data): ResponseData
     {
         try {
@@ -58,6 +95,17 @@ class UserService extends BaseService
         }
     }
 
+    /**
+     * Handle update user
+     *
+     * @param int $id
+     * @param array $data
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function updateUser(int $id, array $data): ResponseData
     {
         try {
@@ -74,6 +122,16 @@ class UserService extends BaseService
         }
     }
 
+    /**
+     * Handle delete user
+     *
+     * @param int $id
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function deleteUser(int $id): ResponseData
     {
         try {

@@ -7,8 +7,21 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
+/**
+ * @class AuthService
+ */
 class AuthService extends BaseService
 {
+    /**
+     * Handle login
+     *
+     * @param array $data
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function login(array $data = []): ResponseData
     {
         try {
@@ -41,15 +54,34 @@ class AuthService extends BaseService
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
-            return $this->dataInternalServerError(trans('messages.api.server_error'));
+            return $this->dataInternalServerError();
         }
     }
 
+    /**
+     * Handle convert username
+     *
+     * @param $userName
+     * @return string
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     private function username($userName): string
     {
         return filter_var($userName, FILTER_VALIDATE_EMAIL) ? 'email' : 'user_name';
     }
 
+    /**
+     * Handle get user info
+     *
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function getUser(): ResponseData
     {
         try {
@@ -66,6 +98,15 @@ class AuthService extends BaseService
     }
 
 
+    /**
+     * Handle logout
+     *
+     * @return ResponseData
+     *
+     * @throws Throwable
+     *
+     * @author Le Hong Minh
+     */
     public function logout(): ResponseData
     {
         $token = auth()->user()->token();
