@@ -15,6 +15,17 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    const ONLY_UPDATE_REQUEST_FIELDS = [
+        'user_name',
+        'full_name',
+        'email',
+        'phone',
+        'role_id',
+        'department_id',
+        'is_super_admin',
+        'is_teacher',
+    ];
+
     protected $fillable = [
         'user_name',
         'full_name',

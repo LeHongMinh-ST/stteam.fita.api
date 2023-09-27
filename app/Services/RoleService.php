@@ -3,30 +3,26 @@
 namespace App\Services;
 
 use App\DTO\ResponseData;
-use App\Models\User;
-use App\Repositories\User\UserRepository;
-use Exception;
-use Illuminate\Support\Facades\Config;
+use App\Repositories\Role\RoleRepository;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
 /**
- * @class UserService
+ * @class RoleService
  */
-class UserService extends BaseService
+class RoleService extends BaseService
 {
     /**
-     *
-     * @param UserRepository $userRepository
+     * @param RoleRepository $roleRepository
      */
     public function __construct(
-        private readonly UserRepository $userRepository
+        private readonly RoleRepository $roleRepository
     )
     {
     }
 
     /**
-     * Handle get list user
+     * Handle get list role
      *
      * @param array $data
      * @return ResponseData
@@ -35,10 +31,10 @@ class UserService extends BaseService
      *
      * @author Le Hong Minh
      */
-    public function getListUser(array $data = []): ResponseData
+    public function getListRole(array $data = []): ResponseData
     {
         try {
-            return $this->dataSuccess($this->userRepository->getListData($data));
+            return $this->dataSuccess($this->roleRepository->getListData($data));
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
@@ -47,7 +43,7 @@ class UserService extends BaseService
     }
 
     /**
-     * Handle get user by id
+     * Handle get role by id
      *
      * @param int $id
      * @return ResponseData
@@ -56,14 +52,15 @@ class UserService extends BaseService
      *
      * @author Le Hong Minh
      */
-    public function getUserById(int $id): ResponseData
+    public function getRoleById(int $id): ResponseData
     {
         try {
-            $user = $this->userRepository->findById($id);
-            if (!$user) {
+            $role = $this->roleRepository->findById($id);
+            if (!$role) {
                 return $this->dataNotFound();
             }
-            return $this->dataSuccess($user);
+
+            return $this->dataSuccess($role);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
@@ -72,7 +69,7 @@ class UserService extends BaseService
     }
 
     /**
-     * Handle create user
+     * Handle create role
      *
      * @param array $data
      * @return ResponseData
@@ -81,14 +78,11 @@ class UserService extends BaseService
      *
      * @author Le Hong Minh
      */
-    public function createUser(array $data): ResponseData
+    public function createRole(array $data = []): ResponseData
     {
         try {
-            if (empty($data['password'])) {
-                $data['password'] = Config::get('constants.default_password');
-            }
-            $user = $this->userRepository->createOrUpdate($data);
-            return $this->dataCreateSuccess($user);
+            $role = $this->roleRepository->createOrUpdate($data);
+            return $this->dataCreateSuccess($role);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
@@ -97,7 +91,7 @@ class UserService extends BaseService
     }
 
     /**
-     * Handle update user
+     * Handle update role
      *
      * @param int $id
      * @param array $data
@@ -107,18 +101,16 @@ class UserService extends BaseService
      *
      * @author Le Hong Minh
      */
-    public function updateUser(int $id, array $data): ResponseData
+    public function updateRole(int $id, array $data = []): ResponseData
     {
         try {
-            $user = $this->userRepository->findById($id);
-            if (!$user) {
+            $role = $this->roleRepository->findById($id);
+            if (!$role) {
                 return $this->dataNotFound();
             }
 
-            $data = getOnlyFields($data, User::ONLY_UPDATE_REQUEST_FIELDS);
-
-            $user = $this->userRepository->createOrUpdate($data, ['id' => $id]);
-            return $this->dataSuccess($user);
+            $role = $this->roleRepository->createOrUpdate($data, ['id' => $id]);
+            return $this->dataSuccess($role);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
@@ -127,7 +119,7 @@ class UserService extends BaseService
     }
 
     /**
-     * Handle delete user
+     * Handle delete role
      *
      * @param int $id
      * @return ResponseData
@@ -136,20 +128,22 @@ class UserService extends BaseService
      *
      * @author Le Hong Minh
      */
-    public function deleteUser(int $id): ResponseData
+    public function deleteRole(int $id): ResponseData
     {
         try {
-            $user = $this->userRepository->findById($id);
-            if (!$user) {
+            $role = $this->roleRepository->findById($id);
+            if (!$role) {
                 return $this->dataNotFound();
             }
-            $this->userRepository->delete($user);
-            return $this->dataNoContent();
+
+            $this->roleRepository->delete($role);
+            return $this->dataNotFound();
         } catch (Throwable $exception) {
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
             return $this->dataInternalServerError();
         }
     }
+
 
 }
