@@ -1,0 +1,849 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8000"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "e9026299-2f8d-4f64-b40e-bbcede1fbf19",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Login user\n*",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_name\":\"adipisci\",\"password\":\"o9f*QX+KNKuj8|\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"access_token\": \"string\",\n        \"token_type\": \"string\",\n        \"expires_at\": \"string\"\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get user info",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/auth\/me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "http:\/\/localhost:3000"
+                                },
+                                {
+                                    "key": "access-control-allow-credentials",
+                                    "value": "true"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"data\":null,\"message\":\"Unauthenticated\",\"status_code\":401}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Permission management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get list permission return json response",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "http:\/\/localhost:3000"
+                                },
+                                {
+                                    "key": "access-control-allow-credentials",
+                                    "value": "true"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"data\":null,\"message\":\"Unauthenticated\",\"status_code\":401}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get group permission return json response",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/permissions\/group",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/permissions\/group"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "http:\/\/localhost:3000"
+                                },
+                                {
+                                    "key": "access-control-allow-credentials",
+                                    "value": "true"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\"data\":null,\"message\":\"Unauthenticated\",\"status_code\":401}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Role management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get list role return json response",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page number of paginated data.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "10",
+                                    "description": "Number of items per page.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "desc",
+                                    "description": "Sort data by created_at field.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "q",
+                                    "value": "test",
+                                    "description": "Search data by name field.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/roles?page=1&limit=10&sort=desc&q=test"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 3,\n                \"name\": \"Gi\u1ea3ng vi\u00ean\",\n                \"description\": null,\n                \"created_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"updated_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"created_at\": \"2023-09-28T10:17:49.000000Z\",\n                \"updated_at\": \"2023-09-28T10:17:49.000000Z\",\n                \"permissions\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"Xem danh s\u00e1ch vai tr\u00f2\",\n                        \"code\": \"role-index\",\n                        \"pivot\": {\n                            \"role_id\": 3,\n                            \"permission_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"T\u1ea1o m\u1edbi vai tr\u00f2\",\n                        \"code\": \"role-create\",\n                        \"pivot\": {\n                            \"role_id\": 3,\n                            \"permission_id\": 2\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"Xem chi ti\u1ebft vai tr\u00f2\",\n                        \"code\": \"role-read\",\n                        \"pivot\": {\n                            \"role_id\": 3,\n                            \"permission_id\": 3\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"name\": \"Gi\u1ea3ng vi\u00ean\",\n                \"description\": null,\n                \"created_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"updated_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"created_at\": \"2023-09-28T10:09:59.000000Z\",\n                \"updated_at\": \"2023-09-28T10:09:59.000000Z\",\n                \"permissions\": []\n            },\n            {\n                \"id\": 1,\n                \"name\": \"Gi\u1ea3ng vi\u00ean\",\n                \"description\": null,\n                \"created_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"updated_by\": {\n                    \"id\": 1,\n                    \"full_name\": \"Admin\"\n                },\n                \"created_at\": \"2023-09-28T10:09:45.000000Z\",\n                \"updated_at\": \"2023-09-28T10:09:45.000000Z\",\n                \"permissions\": []\n            }\n        ],\n        \"first_page_url\": \"http:\/\/127.0.0.1:8000\/api\/roles?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http:\/\/127.0.0.1:8000\/api\/roles?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http:\/\/127.0.0.1:8000\/api\/roles?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http:\/\/127.0.0.1:8000\/api\/roles\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"q\",\"permissions\":[18]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Gi\u1ea3ng vi\u00ean\",\n        \"description\": null,\n        \"created_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"updated_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"created_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"updated_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"Xem danh s\u00e1ch vai tr\u00f2\",\n                \"code\": \"role-index\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"T\u1ea1o m\u1edbi vai tr\u00f2\",\n                \"code\": \"role-create\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 2\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Xem chi ti\u1ebft vai tr\u00f2\",\n                \"code\": \"role-read\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 3\n                }\n            }\n        ]\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get role by id",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "autem",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Gi\u1ea3ng vi\u00ean\",\n        \"description\": null,\n        \"created_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"updated_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"created_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"updated_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"Xem danh s\u00e1ch vai tr\u00f2\",\n                \"code\": \"role-index\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"T\u1ea1o m\u1edbi vai tr\u00f2\",\n                \"code\": \"role-create\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 2\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Xem chi ti\u1ebft vai tr\u00f2\",\n                \"code\": \"role-read\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 3\n                }\n            }\n        ]\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sit",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"kuynpegqvqgwcwefnba\",\"permissions\":[2]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Gi\u1ea3ng vi\u00ean\",\n        \"description\": null,\n        \"created_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"updated_by\": {\n            \"id\": 1,\n            \"full_name\": \"Admin\"\n        },\n        \"created_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"updated_at\": \"2023-09-28T10:17:49.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"Xem danh s\u00e1ch vai tr\u00f2\",\n                \"code\": \"role-index\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 2,\n                \"name\": \"T\u1ea1o m\u1edbi vai tr\u00f2\",\n                \"code\": \"role-create\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 2\n                }\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Xem chi ti\u1ebft vai tr\u00f2\",\n                \"code\": \"role-read\",\n                \"pivot\": {\n                    \"role_id\": 3,\n                    \"permission_id\": 3\n                }\n            }\n        ]\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": "The ID of the role."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Get list user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page number of paginated data.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "10",
+                                    "description": "Number of items per page.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "desc",
+                                    "description": "Sort data by created_at field.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "q",
+                                    "value": "test",
+                                    "description": "Search data by name field and email field.",
+                                    "disabled": false
+                                }
+                            ],
+                            "raw": "{{baseUrl}}\/api\/users?page=1&limit=10&sort=desc&q=test"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 7,\n                \"email\": \"User6@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T02:07:51.000000Z\",\n                \"updated_at\": \"2023-09-27T02:07:51.000000Z\",\n                \"user_name\": \"user6\",\n                \"full_name\": \"User 6\",\n                \"phone\": null,\n                \"created_by\": 1,\n                \"updated_by\": 1,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 6,\n                \"email\": \"User5@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T02:07:25.000000Z\",\n                \"updated_at\": \"2023-09-27T02:07:25.000000Z\",\n                \"user_name\": \"user5\",\n                \"full_name\": \"User 5\",\n                \"phone\": null,\n                \"created_by\": 1,\n                \"updated_by\": 1,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 5,\n                \"email\": \"User4@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T02:06:38.000000Z\",\n                \"updated_at\": \"2023-09-27T02:06:38.000000Z\",\n                \"user_name\": \"user4\",\n                \"full_name\": \"User 4\",\n                \"phone\": null,\n                \"created_by\": null,\n                \"updated_by\": null,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 4,\n                \"email\": \"User3@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T02:06:07.000000Z\",\n                \"updated_at\": \"2023-09-27T02:06:07.000000Z\",\n                \"user_name\": \"user3\",\n                \"full_name\": \"User 3\",\n                \"phone\": null,\n                \"created_by\": 1,\n                \"updated_by\": 1,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 3,\n                \"email\": \"User2@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T02:02:57.000000Z\",\n                \"updated_at\": \"2023-09-27T02:02:57.000000Z\",\n                \"user_name\": \"user2\",\n                \"full_name\": \"User 2\",\n                \"phone\": null,\n                \"created_by\": 1,\n                \"updated_by\": 1,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 2,\n                \"email\": \"User1@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T01:49:16.000000Z\",\n                \"updated_at\": \"2023-09-27T01:49:16.000000Z\",\n                \"user_name\": \"user1\",\n                \"full_name\": \"User 1\",\n                \"phone\": null,\n                \"created_by\": 1,\n                \"updated_by\": 1,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": false,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            },\n            {\n                \"id\": 1,\n                \"email\": \"admin@gmail.com\",\n                \"email_verified_at\": null,\n                \"created_at\": \"2023-09-27T01:43:12.000000Z\",\n                \"updated_at\": \"2023-09-27T01:43:12.000000Z\",\n                \"user_name\": \"admin\",\n                \"full_name\": \"Admin\",\n                \"phone\": null,\n                \"created_by\": null,\n                \"updated_by\": null,\n                \"role_id\": null,\n                \"department_id\": null,\n                \"is_super_admin\": true,\n                \"is_teacher\": false,\n                \"status\": \"enable\",\n                \"social_id\": null,\n                \"social_provider\": null\n            }\n        ],\n        \"first_page_url\": \"http:\/\/127.0.0.1:8000\/api\/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http:\/\/127.0.0.1:8000\/api\/users?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http:\/\/127.0.0.1:8000\/api\/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http:\/\/127.0.0.1:8000\/api\/users\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 7,\n        \"total\": 7\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_name\":\"xxripcgtvcclwwfpfgkbcv\",\"full_name\":\"qzhenbudaeuludlu\",\"email\":\"miller.bergnaum@example.net\",\"phone\":\"flnuhwpkskqsvehxmgqry\",\"role_id\":14,\"department_id\":3,\"is_super_admin\":true,\"is_teacher\":false}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"admin@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"updated_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"user_name\": \"admin\",\n        \"full_name\": \"Admin\",\n        \"phone\": \"09331213344\",\n        \"created_by\": 1,\n        \"updated_by\": 1,\n        \"role_id\": 1,\n        \"department_id\": 1,\n        \"is_super_admin\": false,\n        \"is_teacher\": false,\n        \"status\": \"enable\",\n        \"social_id\": 1,\n        \"social_provider\": \"google\"\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get user by id",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"admin@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"updated_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"user_name\": \"admin\",\n        \"full_name\": \"Admin\",\n        \"phone\": \"09331213344\",\n        \"created_by\": 1,\n        \"updated_by\": 1,\n        \"role_id\": 1,\n        \"department_id\": 1,\n        \"is_super_admin\": false,\n        \"is_teacher\": false,\n        \"status\": \"enable\",\n        \"social_id\": 1,\n        \"social_provider\": \"google\"\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "est",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"user_name\":\"hmh\",\"full_name\":\"mfg\",\"email\":\"charity.lockman@example.org\",\"phone\":\"mwfqprsotqkvichs\",\"role_id\":9,\"department_id\":15,\"is_super_admin\":true,\"is_teacher\":false}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"admin@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"updated_at\": \"2023-09-27T01:43:12.000000Z\",\n        \"user_name\": \"admin\",\n        \"full_name\": \"Admin\",\n        \"phone\": \"09331213344\",\n        \"created_by\": 1,\n        \"updated_by\": 1,\n        \"role_id\": 1,\n        \"department_id\": 1,\n        \"is_super_admin\": false,\n        \"is_teacher\": false,\n        \"status\": \"enable\",\n        \"social_id\": 1,\n        \"social_provider\": \"google\"\n    },\n    \"message\": \"success\",\n    \"status_code\": 200\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "nemo",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"unauthorized\",\n    \"status_code\": 401\n}\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"data\": null,\n    \"message\": \"internal_server_error\",\n    \"status_code\": 500\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "Authorization",
+                "type": "string"
+            }
+        ]
+    }
+}

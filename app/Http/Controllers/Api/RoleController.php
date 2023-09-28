@@ -10,7 +10,10 @@ use Illuminate\Http\Request;
 use Throwable;
 
 /**
+ * APIs for managing roles
  *
+ * @group Role management
+ * @class RoleController
  */
 class RoleController extends BaseApiController
 {
@@ -25,6 +28,18 @@ class RoleController extends BaseApiController
 
     /**
      * Get list role return json response
+     *
+     * @authenticated
+     *
+     * @queryParam page int Page number of paginated data. Example: 1
+     * @queryParam limit int Number of items per page. Example: 10
+     * @queryParam sort string Sort data by created_at field. Example: desc
+     * @queryParam q string Search data by name field. Example: test
+     *
+     * @responseFile status=200 resources/responses/role/role.get.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param Request $request
      * @return JsonResponse
@@ -42,6 +57,13 @@ class RoleController extends BaseApiController
     /**
      * Get role by id
      *
+     * @authenticated
+     *
+     * @responseFile status=200 resources/responses/role/role.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
+     *
      * @param int $id
      * @return JsonResponse
      * @throws Throwable
@@ -55,6 +77,14 @@ class RoleController extends BaseApiController
 
     /**
      * Create role
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 resources/responses/role/role.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=422 resources/responses/error/unprocessable_entity.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param StoreRoleRequest $request
      * @return JsonResponse
@@ -72,6 +102,14 @@ class RoleController extends BaseApiController
     /**
      * Update role
      *
+     * @authenticated
+     *
+     * @responseFile status=200 resources/responses/role/role.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=422 resources/responses/error/unprocessable_entity.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
+     *
      * @param int $id
      * @param UpdateRoleRequest $request
      * @return JsonResponse
@@ -88,6 +126,13 @@ class RoleController extends BaseApiController
 
     /**
      * Delete role
+     *
+     * @authenticated
+     *
+     * @response 204 {}
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param int $id
      * @return JsonResponse

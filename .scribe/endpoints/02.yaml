@@ -1,0 +1,672 @@
+name: 'Role management'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/roles
+    metadata:
+      groupName: 'Role management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get list role return json response'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: 'Page number of paginated data.'
+        required: false
+        example: 1
+        type: integer
+        enumValues: []
+        custom: []
+      limit:
+        name: limit
+        description: 'Number of items per page.'
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        custom: []
+      sort:
+        name: sort
+        description: 'Sort data by created_at field.'
+        required: false
+        example: desc
+        type: string
+        enumValues: []
+        custom: []
+      q:
+        name: q
+        description: 'Search data by name field.'
+        required: false
+        example: test
+        type: string
+        enumValues: []
+        custom: []
+    cleanQueryParameters:
+      page: 1
+      limit: 10
+      sort: desc
+      q: test
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "current_page": 1,
+                  "data": [
+                      {
+                          "id": 3,
+                          "name": "Giảng viên",
+                          "description": null,
+                          "created_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "updated_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "created_at": "2023-09-28T10:17:49.000000Z",
+                          "updated_at": "2023-09-28T10:17:49.000000Z",
+                          "permissions": [
+                              {
+                                  "id": 1,
+                                  "name": "Xem danh sách vai trò",
+                                  "code": "role-index",
+                                  "pivot": {
+                                      "role_id": 3,
+                                      "permission_id": 1
+                                  }
+                              },
+                              {
+                                  "id": 2,
+                                  "name": "Tạo mới vai trò",
+                                  "code": "role-create",
+                                  "pivot": {
+                                      "role_id": 3,
+                                      "permission_id": 2
+                                  }
+                              },
+                              {
+                                  "id": 3,
+                                  "name": "Xem chi tiết vai trò",
+                                  "code": "role-read",
+                                  "pivot": {
+                                      "role_id": 3,
+                                      "permission_id": 3
+                                  }
+                              }
+                          ]
+                      },
+                      {
+                          "id": 2,
+                          "name": "Giảng viên",
+                          "description": null,
+                          "created_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "updated_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "created_at": "2023-09-28T10:09:59.000000Z",
+                          "updated_at": "2023-09-28T10:09:59.000000Z",
+                          "permissions": []
+                      },
+                      {
+                          "id": 1,
+                          "name": "Giảng viên",
+                          "description": null,
+                          "created_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "updated_by": {
+                              "id": 1,
+                              "full_name": "Admin"
+                          },
+                          "created_at": "2023-09-28T10:09:45.000000Z",
+                          "updated_at": "2023-09-28T10:09:45.000000Z",
+                          "permissions": []
+                      }
+                  ],
+                  "first_page_url": "http://127.0.0.1:8000/api/roles?page=1",
+                  "from": 1,
+                  "last_page": 1,
+                  "last_page_url": "http://127.0.0.1:8000/api/roles?page=1",
+                  "links": [
+                      {
+                          "url": null,
+                          "label": "&laquo; Previous",
+                          "active": false
+                      },
+                      {
+                          "url": "http://127.0.0.1:8000/api/roles?page=1",
+                          "label": "1",
+                          "active": true
+                      },
+                      {
+                          "url": null,
+                          "label": "Next &raquo;",
+                          "active": false
+                      }
+                  ],
+                  "next_page_url": null,
+                  "path": "http://127.0.0.1:8000/api/roles",
+                  "per_page": 10,
+                  "prev_page_url": null,
+                  "to": 3,
+                  "total": 3
+              },
+              "message": "success",
+              "status_code": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer bfca3hvd6PeV4aE86k1gZ5D'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/roles
+    metadata:
+      groupName: 'Role management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create role'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: q
+        type: string
+        enumValues: []
+        custom: []
+      permissions:
+        name: permissions
+        description: ''
+        required: false
+        example:
+          - 18
+        type: 'integer[]'
+        enumValues: []
+        custom: []
+    cleanBodyParameters:
+      name: q
+      permissions:
+        - 18
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 3,
+                  "name": "Giảng viên",
+                  "description": null,
+                  "created_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "updated_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "created_at": "2023-09-28T10:17:49.000000Z",
+                  "updated_at": "2023-09-28T10:17:49.000000Z",
+                  "permissions": [
+                      {
+                          "id": 1,
+                          "name": "Xem danh sách vai trò",
+                          "code": "role-index",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 1
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "name": "Tạo mới vai trò",
+                          "code": "role-create",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 2
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "name": "Xem chi tiết vai trò",
+                          "code": "role-read",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 3
+                          }
+                      }
+                  ]
+              },
+              "message": "success",
+              "status_code": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6Ege5dkcPb861a3ZDVav4hf'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/roles/{id}'
+    metadata:
+      groupName: 'Role management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get role by id'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: autem
+        type: string
+        enumValues: []
+        custom: []
+    cleanUrlParameters:
+      id: autem
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 3,
+                  "name": "Giảng viên",
+                  "description": null,
+                  "created_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "updated_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "created_at": "2023-09-28T10:17:49.000000Z",
+                  "updated_at": "2023-09-28T10:17:49.000000Z",
+                  "permissions": [
+                      {
+                          "id": 1,
+                          "name": "Xem danh sách vai trò",
+                          "code": "role-index",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 1
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "name": "Tạo mới vai trò",
+                          "code": "role-create",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 2
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "name": "Xem chi tiết vai trò",
+                          "code": "role-read",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 3
+                          }
+                      }
+                  ]
+              },
+              "message": "success",
+              "status_code": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer ZPef1Ed56D46vhk3bgV8aca'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/roles/{id}'
+    metadata:
+      groupName: 'Role management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update role'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: sit
+        type: string
+        enumValues: []
+        custom: []
+    cleanUrlParameters:
+      id: sit
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: kuynpegqvqgwcwefnba
+        type: string
+        enumValues: []
+        custom: []
+      permissions:
+        name: permissions
+        description: ''
+        required: false
+        example:
+          - 2
+        type: 'integer[]'
+        enumValues: []
+        custom: []
+    cleanBodyParameters:
+      name: kuynpegqvqgwcwefnba
+      permissions:
+        - 2
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "id": 3,
+                  "name": "Giảng viên",
+                  "description": null,
+                  "created_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "updated_by": {
+                      "id": 1,
+                      "full_name": "Admin"
+                  },
+                  "created_at": "2023-09-28T10:17:49.000000Z",
+                  "updated_at": "2023-09-28T10:17:49.000000Z",
+                  "permissions": [
+                      {
+                          "id": 1,
+                          "name": "Xem danh sách vai trò",
+                          "code": "role-index",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 1
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "name": "Tạo mới vai trò",
+                          "code": "role-create",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 2
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "name": "Xem chi tiết vai trò",
+                          "code": "role-read",
+                          "pivot": {
+                              "role_id": 3,
+                              "permission_id": 3
+                          }
+                      }
+                  ]
+              },
+              "message": "success",
+              "status_code": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 683hbkVZvfaEdea4D1g5c6P'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/roles/{id}'
+    metadata:
+      groupName: 'Role management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete role'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: quia
+        type: string
+        enumValues: []
+        custom: []
+    cleanUrlParameters:
+      id: quia
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: '{}'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer c56dfhkVZePD84vba6a3g1E'
+    controller: null
+    method: null
+    route: null
+    custom: []

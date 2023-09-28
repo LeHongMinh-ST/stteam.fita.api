@@ -27,9 +27,13 @@ class RoleRepositoryEloquent extends BaseRepositoryEloquent implements RoleRepos
 
         $query->when(!empty($search), function ($query) use ($search) {
             $query->where('name', 'like', "%{$search}%");
-        })->where('faculty_id', auth()->user()->faculty_id ?? '')
-            ->with(['createdBy', 'updatedBy', 'permissions'])
-            ->orderBy('created_at', $sort);
+        })->with(['createdBy' => function ($query) {
+            $query->select('id', 'full_name');
+        }, 'updatedBy' => function ($query) {
+            $query->select('id', 'full_name');
+        }, 'permissions' => function ($query) {
+            $query->select('permissions.id', 'name', 'code');
+        }])->orderBy('created_at', $sort);
 
         return isset($data['page']) ? $query->paginate($limit) : $query->get();
     }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api\Role;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Api\BaseApiRequest;
 
-class StoreRoleRequest extends FormRequest
+class StoreRoleRequest extends BaseApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,8 @@ class StoreRoleRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
+            'permissions' => 'nullable|array',
+            'permissions.*' => 'nullable|integer',
         ];
     }
 }

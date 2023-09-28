@@ -27,6 +27,10 @@ class UpdateUserRequest extends BaseApiRequest
             'full_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id . ',id',
             'phone' => 'nullable|string|max:255|unique:users,phone_number,' . $id . ',id',
+            'role_id' => 'nullable|integer|exists:roles,id',
+            'department_id' => 'nullable|integer|exists:departments,id',
+            'is_super_admin' => 'nullable|boolean',
+            'is_teacher' => 'nullable|boolean',
         ];
     }
 }

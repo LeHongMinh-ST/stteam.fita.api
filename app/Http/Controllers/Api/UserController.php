@@ -11,7 +11,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Throwable;
 
 /**
+ * APIs for managing users
  *
+ * @group User management
+ * @class UserController
  */
 class UserController extends BaseApiController
 {
@@ -25,7 +28,19 @@ class UserController extends BaseApiController
     }
 
     /**
-     * Get list user return json response
+     * Get list user
+     *
+     * @authenticated
+     *
+     * @queryParam page int Page number of paginated data. Example: 1
+     * @queryParam limit int Number of items per page. Example: 10
+     * @queryParam sort string Sort data by created_at field. Example: desc
+     * @queryParam q string Search data by name field and email field. Example: test
+     *
+     * @responseFile status=200 resources/responses/user/user.get.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param Request $request
      * @return JsonResponse
@@ -43,6 +58,15 @@ class UserController extends BaseApiController
     /**
      * Get user by id
      *
+     * @authenticated
+     *
+     * @urlParam id int required The ID of the user. Example: 1
+     *
+     * @responseFile status=200 resources/responses/user/user.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
+     *
      * @param int $id
      * @return JsonResponse
      * @throws Throwable
@@ -56,6 +80,14 @@ class UserController extends BaseApiController
 
     /**
      * Create user
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 resources/responses/user/user.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=422 resources/responses/error/unprocessable_entity.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param StoreUserRequest $request
      * @return JsonResponse
@@ -73,6 +105,14 @@ class UserController extends BaseApiController
     /**
      * Update user
      *
+     * @authenticated
+     *
+     * @responseFile status=200 resources/responses/user/user.show.json
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=422 resources/responses/error/unprocessable_entity.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
+     *
      * @param int $id
      * @param UpdateUserRequest $request
      * @return JsonResponse
@@ -89,6 +129,13 @@ class UserController extends BaseApiController
 
     /**
      * Delete user
+     *
+     * @authenticated
+     *
+     * @response 204 {}
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @param int $id
      * @return JsonResponse

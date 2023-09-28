@@ -1,0 +1,11 @@
+{
+    "data": {
+        "errors": {
+            "name": [
+                "The name has already been taken."
+            ]
+        }
+    },
+    "message": "unprocessable_entity",
+    "status_code": 422
+}

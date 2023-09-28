@@ -7,7 +7,10 @@ use Illuminate\Http\JsonResponse;
 use Throwable;
 
 /**
+ * APIs for managing permissions
  *
+ * @group Permission management
+ * @class PermissionController
  */
 class PermissionController extends BaseApiController
 {
@@ -23,6 +26,12 @@ class PermissionController extends BaseApiController
     /**
      * Get list permission return json response
      *
+     * @authenticated
+     *
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
+     *
      * @return JsonResponse
      * @throws Throwable
      */
@@ -35,6 +44,12 @@ class PermissionController extends BaseApiController
 
     /**
      * Get group permission return json response
+     *
+     * @authenticated
+     *
+     * @responseFile status=401 resources/responses/error/unauthorized.json
+     * @responseFile status=403 resources/responses/error/forbidden.json
+     * @responseFile status=500 resources/responses/error/internal_server_error.json
      *
      * @return JsonResponse
      * @throws Throwable

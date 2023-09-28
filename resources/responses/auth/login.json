@@ -1,0 +1,9 @@
+{
+    "data": {
+        "access_token": "string",
+        "token_type": "string",
+        "expires_at": "string"
+    },
+    "message": "success",
+    "status_code": 200
+}

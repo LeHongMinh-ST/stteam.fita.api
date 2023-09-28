@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use WendellAdriel\Lift\Lift;
 
-class Permission extends BaseModel
+class Permission extends Model
 {
     use HasFactory, Lift;
 
@@ -26,7 +27,7 @@ class Permission extends BaseModel
         return $this->belongsToMany(Role::class, 'role_permission');
     }
 
-    protected static function boot(): void
+    public static function boot(): void
     {
         parent::boot();
 
