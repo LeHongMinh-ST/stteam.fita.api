@@ -10,8 +10,14 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Throwable;
 
+/**
+ *
+ */
 class UserController extends BaseApiController
 {
+    /**
+     * @param UserService $userService
+     */
     public function __construct(
         private readonly UserService $userService
     )

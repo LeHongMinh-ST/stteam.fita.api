@@ -118,6 +118,7 @@ class UserService extends BaseService
             $data = getOnlyFields($data, User::ONLY_UPDATE_REQUEST_FIELDS);
 
             $user = $this->userRepository->createOrUpdate($data, ['id' => $id]);
+
             return $this->dataSuccess($user);
         } catch (Throwable $exception) {
             Log::error(__METHOD__);

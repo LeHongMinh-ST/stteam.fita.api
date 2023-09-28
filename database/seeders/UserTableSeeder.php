@@ -25,6 +25,7 @@ class UserTableSeeder extends Seeder
                 'user_name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Config::get('constants.default_password'),
+                'is_super_admin' => true,
             ],
             ['email' => 'admin@gmail.com']
         );

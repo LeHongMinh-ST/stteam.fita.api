@@ -12,6 +12,10 @@ class Role extends BaseModel
 
     protected $table = 'roles';
 
+    const ONLY_UPDATE_REQUEST_FIELDS = [
+        'name',
+    ];
+
     protected $fillable = [
         'name',
         'created_by',

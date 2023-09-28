@@ -3,7 +3,9 @@
 namespace App\Services;
 
 use App\DTO\ResponseData;
+use App\Models\Role;
 use App\Repositories\Role\RoleRepository;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -80,10 +82,17 @@ class RoleService extends BaseService
      */
     public function createRole(array $data = []): ResponseData
     {
+        DB::beginTransaction();
         try {
             $role = $this->roleRepository->createOrUpdate($data);
+
+            $role->permissions()->attach(@$data['permission_ids'] ?? []);
+
+            DB::commit();
             return $this->dataCreateSuccess($role);
         } catch (Throwable $exception) {
+            DB::rollBack();
+
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
             return $this->dataInternalServerError();
@@ -103,17 +112,29 @@ class RoleService extends BaseService
      */
     public function updateRole(int $id, array $data = []): ResponseData
     {
+        DB::beginTransaction();
         try {
             $role = $this->roleRepository->findById($id);
+
             if (!$role) {
                 return $this->dataNotFound();
             }
 
+            $permissionIds = $data['permission_ids'] ?? [];
+
+            $data = getOnlyFields($data, Role::ONLY_UPDATE_REQUEST_FIELDS);
+
             $role = $this->roleRepository->createOrUpdate($data, ['id' => $id]);
+
+            $role->permissions()->sync($permissionIds);
+
+            DB::commit();
             return $this->dataSuccess($role);
         } catch (Throwable $exception) {
+            DB::rollBack();
             Log::error(__METHOD__);
             Log::error($exception->getMessage());
+
             return $this->dataInternalServerError();
         }
     }
@@ -132,6 +153,7 @@ class RoleService extends BaseService
     {
         try {
             $role = $this->roleRepository->findById($id);
+
             if (!$role) {
                 return $this->dataNotFound();
             }
