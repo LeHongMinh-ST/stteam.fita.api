@@ -249,6 +249,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -263,7 +274,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer d1aPvDg6e43EkbaVh8Z5c6f'
+      - 'Bearer haPefkDva6VZ854bgd16E3c'
     controller: null
     method: null
     route: null
@@ -294,7 +305,7 @@ endpoints:
         name: user_name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: xxripcgtvcclwwfpfgkbcv
+        example: zdugvishnkt
         type: string
         enumValues: []
         custom: []
@@ -302,7 +313,7 @@ endpoints:
         name: full_name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: qzhenbudaeuludlu
+        example: bpetskn
         type: string
         enumValues: []
         custom: []
@@ -310,7 +321,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address. Must not be greater than 255 characters.'
         required: true
-        example: miller.bergnaum@example.net
+        example: jtorphy@example.com
         type: string
         enumValues: []
         custom: []
@@ -318,7 +329,7 @@ endpoints:
         name: phone
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: flnuhwpkskqsvehxmgqry
+        example: pwui
         type: string
         enumValues: []
         custom: []
@@ -326,7 +337,7 @@ endpoints:
         name: role_id
         description: ''
         required: false
-        example: 14
+        example: 3
         type: integer
         enumValues: []
         custom: []
@@ -334,7 +345,7 @@ endpoints:
         name: department_id
         description: ''
         required: false
-        example: 3
+        example: 14
         type: integer
         enumValues: []
         custom: []
@@ -342,7 +353,7 @@ endpoints:
         name: is_super_admin
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         custom: []
@@ -355,13 +366,13 @@ endpoints:
         enumValues: []
         custom: []
     cleanBodyParameters:
-      user_name: xxripcgtvcclwwfpfgkbcv
-      full_name: qzhenbudaeuludlu
-      email: miller.bergnaum@example.net
-      phone: flnuhwpkskqsvehxmgqry
-      role_id: 14
-      department_id: 3
-      is_super_admin: true
+      user_name: zdugvishnkt
+      full_name: bpetskn
+      email: jtorphy@example.com
+      phone: pwui
+      role_id: 3
+      department_id: 14
+      is_super_admin: false
       is_teacher: false
     fileParameters: []
     responses:
@@ -406,6 +417,34 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "data": {
+                  "errors": {
+                      "name": [
+                          "The name has already been taken."
+                      ]
+                  }
+              },
+              "message": "unprocessable_entity",
+              "status_code": 422
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -420,7 +459,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer dePhaD6gVEc56Zk1843vfba'
+      - 'Bearer 64V3kaZ1edchPf6avgb58DE'
     controller: null
     method: null
     route: null
@@ -500,6 +539,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -514,7 +564,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6eaa4E6vPhf3gb51dkcD8ZV'
+      - 'Bearer PV63E18ebh4fd56aZDkavcg'
     controller: null
     method: null
     route: null
@@ -541,12 +591,12 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: est
+        example: rem
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: est
+      id: rem
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -554,7 +604,7 @@ endpoints:
         name: user_name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: hmh
+        example: ovmvnyw
         type: string
         enumValues: []
         custom: []
@@ -562,7 +612,7 @@ endpoints:
         name: full_name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: mfg
+        example: dgmxfuxtpmgvqdmvgapvw
         type: string
         enumValues: []
         custom: []
@@ -570,7 +620,7 @@ endpoints:
         name: email
         description: 'Must be a valid email address. Must not be greater than 255 characters.'
         required: true
-        example: charity.lockman@example.org
+        example: ryleigh.maggio@example.com
         type: string
         enumValues: []
         custom: []
@@ -578,7 +628,7 @@ endpoints:
         name: phone
         description: 'Must not be greater than 255 characters.'
         required: false
-        example: mwfqprsotqkvichs
+        example: aumczdfrohedfhjzbwcn
         type: string
         enumValues: []
         custom: []
@@ -586,7 +636,7 @@ endpoints:
         name: role_id
         description: ''
         required: false
-        example: 9
+        example: 10
         type: integer
         enumValues: []
         custom: []
@@ -594,7 +644,7 @@ endpoints:
         name: department_id
         description: ''
         required: false
-        example: 15
+        example: 3
         type: integer
         enumValues: []
         custom: []
@@ -602,7 +652,7 @@ endpoints:
         name: is_super_admin
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         custom: []
@@ -615,13 +665,13 @@ endpoints:
         enumValues: []
         custom: []
     cleanBodyParameters:
-      user_name: hmh
-      full_name: mfg
-      email: charity.lockman@example.org
-      phone: mwfqprsotqkvichs
-      role_id: 9
-      department_id: 15
-      is_super_admin: true
+      user_name: ovmvnyw
+      full_name: dgmxfuxtpmgvqdmvgapvw
+      email: ryleigh.maggio@example.com
+      phone: aumczdfrohedfhjzbwcn
+      role_id: 10
+      department_id: 3
+      is_super_admin: false
       is_teacher: false
     fileParameters: []
     responses:
@@ -666,6 +716,34 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "data": {
+                  "errors": {
+                      "name": [
+                          "The name has already been taken."
+                      ]
+                  }
+              },
+              "message": "unprocessable_entity",
+              "status_code": 422
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -680,7 +758,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer dbZ1h3f5avekgP8VE66a4cD'
+      - 'Bearer 3fV5vPhED1eZ6c8bkad4a6g'
     controller: null
     method: null
     route: null
@@ -707,12 +785,12 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: nemo
+        example: illo
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: nemo
+      id: illo
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -737,6 +815,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -751,7 +840,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Da86b6Evak4fe3P5dVZcgh1'
+      - 'Bearer eD1ZbEdk65cvgah6faPV843'
     controller: null
     method: null
     route: null

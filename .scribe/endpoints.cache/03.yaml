@@ -30,6 +30,17 @@ endpoints:
     responses:
       -
         status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
         content: '{"data":null,"message":"Unauthenticated","status_code":401}'
         headers:
           cache-control: 'no-cache, private'
@@ -38,11 +49,33 @@ endpoints:
           access-control-allow-credentials: 'true'
         description: null
         custom: []
+      -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer 5bva16fh4VEDkPZ3cae86dg'
+      - 'Bearer 8h6ZcDdkva46ab1f3P5EgeV'
     controller: null
     method: null
     route: null
@@ -74,6 +107,17 @@ endpoints:
     responses:
       -
         status: 401
+        content: |
+          {
+              "data": null,
+              "message": "unauthorized",
+              "status_code": 401
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
         content: '{"data":null,"message":"Unauthenticated","status_code":401}'
         headers:
           cache-control: 'no-cache, private'
@@ -82,11 +126,33 @@ endpoints:
           access-control-allow-credentials: 'true'
         description: null
         custom: []
+      -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |
+          {
+              "data": null,
+              "message": "internal_server_error",
+              "status_code": 500
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer 68Ze1hdaEv63k4DP5gVcabf'
+      - 'Bearer fkDbgac66Ved3v1E85ZPah4'
     controller: null
     method: null
     route: null

@@ -194,6 +194,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -208,7 +219,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer bfca3hvd6PeV4aE86k1gZ5D'
+      - 'Bearer 8P3hDE6dfe5g4cvbak1a6VZ'
     controller: null
     method: null
     route: null
@@ -239,7 +250,7 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: q
+        example: mfwdqxjshelyen
         type: string
         enumValues: []
         custom: []
@@ -248,14 +259,14 @@ endpoints:
         description: ''
         required: false
         example:
-          - 18
+          - 7
         type: 'integer[]'
         enumValues: []
         custom: []
     cleanBodyParameters:
-      name: q
+      name: mfwdqxjshelyen
       permissions:
-        - 18
+        - 7
     fileParameters: []
     responses:
       -
@@ -324,6 +335,34 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "data": {
+                  "errors": {
+                      "name": [
+                          "The name has already been taken."
+                      ]
+                  }
+              },
+              "message": "unprocessable_entity",
+              "status_code": 422
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -338,7 +377,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6Ege5dkcPb861a3ZDVav4hf'
+      - 'Bearer ED6avPa56g1ZhfcV3de4kb8'
     controller: null
     method: null
     route: null
@@ -365,12 +404,12 @@ endpoints:
         name: id
         description: 'The ID of the role.'
         required: true
-        example: autem
+        example: assumenda
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: autem
+      id: assumenda
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -443,6 +482,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -457,7 +507,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ZPef1Ed56D46vhk3bgV8aca'
+      - 'Bearer EP18D5fh64gkb3acveVZd6a'
     controller: null
     method: null
     route: null
@@ -484,12 +534,12 @@ endpoints:
         name: id
         description: 'The ID of the role.'
         required: true
-        example: sit
+        example: corporis
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: sit
+      id: corporis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -497,7 +547,7 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: kuynpegqvqgwcwefnba
+        example: iyyrvkeigruogmumkphad
         type: string
         enumValues: []
         custom: []
@@ -506,14 +556,14 @@ endpoints:
         description: ''
         required: false
         example:
-          - 2
+          - 13
         type: 'integer[]'
         enumValues: []
         custom: []
     cleanBodyParameters:
-      name: kuynpegqvqgwcwefnba
+      name: iyyrvkeigruogmumkphad
       permissions:
-        - 2
+        - 13
     fileParameters: []
     responses:
       -
@@ -582,6 +632,34 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "data": {
+                  "errors": {
+                      "name": [
+                          "The name has already been taken."
+                      ]
+                  }
+              },
+              "message": "unprocessable_entity",
+              "status_code": 422
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -596,7 +674,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 683hbkVZvfaEdea4D1g5c6P'
+      - 'Bearer aDk8aPvd3geh561c4EZbfV6'
     controller: null
     method: null
     route: null
@@ -623,12 +701,12 @@ endpoints:
         name: id
         description: 'The ID of the role.'
         required: true
-        example: quia
+        example: unde
         type: string
         enumValues: []
         custom: []
     cleanUrlParameters:
-      id: quia
+      id: unde
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -653,6 +731,17 @@ endpoints:
         description: ''
         custom: []
       -
+        status: 403
+        content: |
+          {
+              "data": null,
+              "message": "forbidden",
+              "status_code": 403
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
         status: 500
         content: |
           {
@@ -667,7 +756,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer c56dfhkVZePD84vba6a3g1E'
+      - 'Bearer hbc564PZgae6VD1ad8fv3Ek'
     controller: null
     method: null
     route: null

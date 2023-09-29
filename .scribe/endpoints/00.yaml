@@ -28,7 +28,7 @@ endpoints:
         name: user_name
         description: ''
         required: true
-        example: adipisci
+        example: quaerat
         type: string
         enumValues: []
         custom: []
@@ -36,13 +36,13 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: 'o9f*QX+KNKuj8|'
+        example: '%m{bFrV(_P'
         type: string
         enumValues: []
         custom: []
     cleanBodyParameters:
-      user_name: adipisci
-      password: 'o9f*QX+KNKuj8|'
+      user_name: quaerat
+      password: '%m{bFrV(_P'
     fileParameters: []
     responses:
       -
@@ -139,7 +139,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 4h8DEfZgeak5v1366PbdVac'
+      - 'Bearer 8hDfbP45a6cdvEZak1V3eg6'
     controller: null
     method: null
     route: null
@@ -205,7 +205,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer cv6a13hk8DZb4dgae6EVPf5'
+      - 'Bearer fga8ka156vh6P3EdeZc4VDb'
     controller: null
     method: null
     route: null
